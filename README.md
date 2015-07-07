@@ -12,7 +12,7 @@ The repository is structured by modules:
 
 Each module contains specific tutorials. Most of them are implemented using [iPython Notebook](http://ipython.org/notebook.html) and the latest [MOSEK release](https://mosek.com/resources/downloads).
 
-Please fill free to report any issue or suggest improvements!
+Please fill free to report any issue or suggest improvements through thr issue tracker or [via email ](mailto:support@mosek.com)
 
 -----------------------------------------------------------------------------------------------------
 
