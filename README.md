@@ -6,13 +6,16 @@ The provided material complements the official [MOSEK documentation](https://mos
 
 The repository is structured by modules:
 
-  * `Fusion`
-  * `Polynomial Optimization`
+  * [`Fusion`](./Fusion)
+  * [`Portfolio optimization`](./Portfolio)
+  
+
+For a comprehensive `Julia` toolbox for `Polynomial Optimization` [click here](https://github.com/MOSEK/Polyopt.jl).
   
 
 Each module contains specific tutorials. Most of them are implemented using [iPython Notebook](http://ipython.org/notebook.html) and the latest [MOSEK release](https://mosek.com/resources/downloads).
 
-Please fill free to report any issue or suggest improvements through thr issue tracker or [via email ](mailto:support@mosek.com)
+Please fill free to report any issue or suggest improvements through the issue tracker or [via email ](mailto:support@mosek.com)
 
 -----------------------------------------------------------------------------------------------------
 
