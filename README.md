@@ -1,7 +1,7 @@
 # MOSEK Tutorials
 
 A collection of tutorials for the MOSEK package.
-
+ 
 The provided material complements the official [MOSEK documentation](https://mosek.com/resources/doc) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
 The repository is structured by modules:
