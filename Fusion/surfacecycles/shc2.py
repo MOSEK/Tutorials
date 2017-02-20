@@ -96,9 +96,9 @@ def getExample(name):
 		return plyfile.PlyData.read(urllib2.build_opener().open(urllib2.Request(
 			'http://people.sc.fsu.edu/~jburkardt/data/ply/mug.ply')))
 	else:
-		return plyfile.PlyData.read(io.open('/home/aszek/CODE/ply/'+name, 'r'))
+		return plyfile.PlyData.read(io.open(name, 'r'))
 def getCycleExample(name):
-	return np.load(np.DataSource().open('/home/aszek/CODE/ply/'+name))
+	return np.load(np.DataSource().open(name))
 
 #Find the basis for the nullspace of a matrix
 def nullspace(A):
