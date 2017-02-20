@@ -12,7 +12,8 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [`Linear regression`](./Fusion/Regression%20techniques%20using%20MOSEK%20Fusion%20API.ipynb)
   * [`Risk parity portfolio selection`](./Portfolio/Risk%20Parity%20Portfolio%20Selection%20using%20MOSEK%20Optimizer%20API.ipynb)  
   * [`Smallest enclosing sphere`](./Fusion/minimum%20ellipsoid.ipynb)
-  
+  * [`Optimization of cycles on surfaces`](./Fusion/surfacecycles/surfaceCycles.ipynb)
+
 For a comprehensive `Julia` toolbox for `Polynomial Optimization` [click here](https://github.com/MOSEK/Polyopt.jl).
   
 
