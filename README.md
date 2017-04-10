@@ -13,6 +13,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [`Risk parity portfolio selection`](./Portfolio/Risk%20Parity%20Portfolio%20Selection%20using%20MOSEK%20Optimizer%20API.ipynb)  
   * [`Smallest enclosing sphere`](./Fusion/minimum%20ellipsoid.ipynb)
   * [`Optimization of cycles on surfaces`](./Fusion/surfacecycles/surfaceCycles.ipynb)
+  * [`Equilibrium of a system of string/springs`](./Fusion/equilibrium/equilibrium.ipynb)
 
 For a comprehensive `Julia` toolbox for `Polynomial Optimization` [click here](https://github.com/MOSEK/Polyopt.jl).
   
