@@ -18,6 +18,9 @@ The provided material complements the official [MOSEK documentation](https://mos
 
 For a comprehensive `Julia` toolbox for `Polynomial Optimization` [click here](https://github.com/MOSEK/Polyopt.jl).
   
+# Remark
+
+Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct links are available on the [MOSEK website](https://mosek.com/resources/doc#the-mosek-notebook-collection).
 
 -----------------------------------------------------------------------------------------------------
 
