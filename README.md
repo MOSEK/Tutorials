@@ -14,6 +14,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [`Smallest enclosing sphere`](./Fusion/minimum%20ellipsoid.ipynb)
   * [`Optimization of cycles on surfaces`](./Fusion/surfacecycles/surfaceCycles.ipynb)
   * [`Equilibrium of a system of string/springs`](./Fusion/equilibrium/equilibrium.ipynb)
+  * [`Unit commitment problem`](./Fusion/unitcommitment/ucp.ipynb)
 
 For a comprehensive `Julia` toolbox for `Polynomial Optimization` [click here](https://github.com/MOSEK/Polyopt.jl).
   
