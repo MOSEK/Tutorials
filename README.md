@@ -4,7 +4,7 @@ A collection of tutorials for the MOSEK package.
  
 The provided material complements the official [MOSEK documentation](https://mosek.com/resources/doc) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
-`Python` notebooks:
+## Python notebooks:
 
   * [`Introduction to Fusion`](./Fusion/Quickstart/expressions.ipynb)
   * [`Filter design`](./Fusion/Filter%20design.ipynb)
@@ -15,12 +15,15 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [`Optimization of cycles on surfaces`](./Fusion/surfacecycles/surfaceCycles.ipynb)
   * [`Equilibrium of a system of string/springs`](./Fusion/equilibrium/equilibrium.ipynb)
   * [`Unit commitment problem`](./Fusion/unitcommitment/ucp.ipynb)
+  * [`Least squares regression`](./Fusion/regression-various/regression-leastsquares.ipynb)
+
+Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
+
+Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct viewing links are available on the [MOSEK website](https://mosek.com/resources/doc#the-mosek-notebook-collection).
+
+## Julia Polyopt toolbox
 
 For a comprehensive `Julia` toolbox for `Polynomial Optimization` [click here](https://github.com/MOSEK/Polyopt.jl).
-  
-# Remark
-
-Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct links are available on the [MOSEK website](https://mosek.com/resources/doc#the-mosek-notebook-collection).
 
 -----------------------------------------------------------------------------------------------------
 
