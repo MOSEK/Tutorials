@@ -16,6 +16,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [`Equilibrium of a system of string/springs`](./Fusion/equilibrium/equilibrium.ipynb)
   * [`Unit commitment problem`](./Fusion/unitcommitment/ucp.ipynb)
   * [`Least squares regression`](./Fusion/regression-various/regression-leastsquares.ipynb)
+  * [`Exact planar cover`](./Optimizer/integer-exact-cover/exactcover.ipynb)
 
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
