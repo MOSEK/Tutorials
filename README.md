@@ -17,6 +17,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [`Unit commitment problem`](./Fusion/unitcommitment/ucp.ipynb)
   * [`Least squares regression`](./Fusion/regression-various/regression-leastsquares.ipynb)
   * [`Exact planar cover`](./Optimizer/integer-exact-cover/exactcover.ipynb)
+  * [`Binary Quadratic problems`](./Fusion/BinaryQuadratic-SDP)
 
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
