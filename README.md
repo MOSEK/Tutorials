@@ -2,7 +2,7 @@
 
 A collection of tutorials for the MOSEK package.
  
-The provided material complements the official [MOSEK documentation](https://mosek.com/resources/doc) with case studies, step-by-step tutorials and other material that may not fit otherwise.
+The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
 ## Python notebooks:
 
@@ -21,7 +21,7 @@ The provided material complements the official [MOSEK documentation](https://mos
 
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
-Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct viewing links are available on the [MOSEK website](https://mosek.com/resources/doc#the-mosek-notebook-collection).
+Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct viewing links are available on the [MOSEK website](https://mosek.com/documentation).
 
 ## Julia Polyopt toolbox
 
