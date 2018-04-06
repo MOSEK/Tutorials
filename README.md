@@ -1,6 +1,6 @@
 # MOSEK Tutorials
 
-A collection of tutorials for the MOSEK package.
+A collection of tutorials for the MOSEK package. Compatible with version 8 of Mosek. 
  
 The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
