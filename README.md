@@ -6,18 +6,18 @@ The provided material complements the official [MOSEK documentation](https://mos
 
 ## Python notebooks:
 
-  * ['Introduction to Fusion'](./fusion-intro/fusion.ipynb)
-  * ['Least squares regression'](./leastsquares/regression-leastsquares.ipynb)
-  * ['Linear regression techniques'](./regression/regression.ipynb)
-  * ['Risk parity portfolio selection'](./portfolio-riskparity/riskparity.ipynb)
-  * ['Unit commitment'](./unitcommitment/ucp.ipynb)
-  * ['Filter design'](./filterdesign/filterdesign.ipynb)
-  * ['Binary quadratic problems'](./binary-quadratic/binquad.ipynb)
-  * ['Geometric facility location'](./facility-location/small_disks.ipynb)
-  * ['Smallest enclosing sphere'](./minimum-ellipsoid/minimum-ellipsoid.ipynb)
-  * ['Optimization of cycles on surfaces'](./surfacecycles/surfaceCycles.ipynb)
-  * ['Equilibrium of masses with springs'](./equilibrium/equilibrium.ipynb)
-  * ['Exact planar cover'](./exact-planar-cover/exactcover.ipynb)
+  * [Introduction to Fusion](./fusion-intro/fusion.ipynb)
+  * [Least squares regression](./leastsquares/regression-leastsquares.ipynb)
+  * [Linear regression techniques](./regression/regression.ipynb)
+  * [Risk parity portfolio selection](./portfolio-riskparity/riskparity.ipynb)
+  * [Unit commitment](./unitcommitment/ucp.ipynb)
+  * [Filter design](./filterdesign/filterdesign.ipynb)
+  * [Binary quadratic problems](./binary-quadratic/binquad.ipynb)
+  * [Geometric facility location](./facility-location/small_disks.ipynb)
+  * [Smallest enclosing sphere](./minimum-ellipsoid/minimum-ellipsoid.ipynb)
+  * [Optimization of cycles on surfaces](./surfacecycles/surfaceCycles.ipynb)
+  * [Equilibrium of masses with springs](./equilibrium/equilibrium.ipynb)
+  * [Exact planar cover](./exact-planar-cover/exactcover.ipynb)
   
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
