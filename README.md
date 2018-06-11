@@ -1,24 +1,24 @@
 # MOSEK Tutorials
 
-A collection of tutorials for the MOSEK package. Compatible with version 9 of MOSEK.
+A collection of tutorials for the MOSEK package. Compatible with version 9 of MOSEK. Tutorials compatible with version 8 can be found in the ``version8`` branch of this repository, https://github.com/MOSEK/Tutorials/tree/version8.
  
 The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
 ## Python notebooks:
 
-  * [`Introduction to Fusion`](./Fusion/Quickstart/expressions.ipynb)
-  * [`Filter design`](./Fusion/Filter%20design.ipynb)
-  * [`Geometric facility location`](./Fusion/small_disks.ipynb)
-  * [`Linear regression`](./Fusion/Regression%20techniques%20using%20MOSEK%20Fusion%20API.ipynb)
-  * [`Risk parity portfolio selection`](./Portfolio/Risk%20Parity%20Portfolio%20Selection%20using%20MOSEK%20Optimizer%20API.ipynb)  
-  * [`Smallest enclosing sphere`](./Fusion/minimum%20ellipsoid.ipynb)
-  * [`Optimization of cycles on surfaces`](./Fusion/surfacecycles/surfaceCycles.ipynb)
-  * [`Equilibrium of a system of string/springs`](./Fusion/equilibrium/equilibrium.ipynb)
-  * [`Unit commitment problem`](./Fusion/unitcommitment/ucp.ipynb)
-  * [`Least squares regression`](./Fusion/regression-various/regression-leastsquares.ipynb)
-  * [`Exact planar cover`](./Optimizer/integer-exact-cover/exactcover.ipynb)
-  * [`Binary Quadratic problems`](./Fusion/BinaryQuadratic-SDP)
-
+  * ['Introduction to Fusion'](./fusion-intro/fusion.ipynb)
+  * ['Least squares regression'](./leastsquares/regression-leastsquares.ipynb)
+  * ['Linear regression techniques'](./regression/regression.ipynb)
+  * ['Risk parity portfolio selection'](./portfolio-riskparity/riskparity.ipynb)
+  * ['Unit commitment'](./unitcommitment/ucp.ipynb)
+  * ['Filter design'](./filterdesign/filterdesign.ipynb)
+  * ['Binary quadratic problems'](./binary-quadratic/binquad.ipynb)
+  * ['Geometric facility location'](./facility-location/small_disks.ipynb)
+  * ['Smallest enclosing sphere'](./minimum-ellipsoid/minimum-ellipsoid.ipynb)
+  * ['Optimization of cycles on surfaces'](./surfacecycles/surfaceCycles.ipynb)
+  * ['Equilibrium of masses with springs'](./equilibrium/equilibrium.ipynb)
+  * ['Exact planar cover'](./exact-planar-cover/exactcover.ipynb)
+  
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
 Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct viewing links are available on the [MOSEK website](https://mosek.com/documentation).
