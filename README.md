@@ -9,6 +9,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Introduction to Fusion](./fusion-intro/fusion.ipynb)
   * [Least squares regression](./leastsquares/regression-leastsquares.ipynb)
   * [Linear regression techniques](./regression/regression.ipynb)
+  * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
   * [Risk parity portfolio selection](./portfolio-riskparity/riskparity.ipynb)
   * [Unit commitment](./unitcommitment/ucp.ipynb)
   * [Filter design](./filterdesign/filterdesign.ipynb)
