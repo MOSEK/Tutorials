@@ -12,6 +12,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
   * [Risk parity portfolio selection](./portfolio-riskparity/riskparity.ipynb)
   * [Unit commitment](./unitcommitment/ucp.ipynb)
+  * [SINR Optimization](./sinr-optimization/sinr-optimization.ipynb)
   * [Filter design](./filterdesign/filterdesign.ipynb)
   * [Binary quadratic problems](./binary-quadratic/binquad.ipynb)
   * [Geometric facility location](./facility-location/small_disks.ipynb)
