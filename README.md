@@ -15,6 +15,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [SINR Optimization](./sinr-optimization/sinr-optimization.ipynb)
   * [Filter design](./filterdesign/filterdesign.ipynb)
   * [Binary quadratic problems](./binary-quadratic/binquad.ipynb)
+  * [Subcarrier and power allocation](./f-sparc/fsparc.ipynb)
   * [Geometric facility location](./facility-location/small_disks.ipynb)
   * [Smallest enclosing sphere](./minimum-ellipsoid/minimum-ellipsoid.ipynb)
   * [Optimization of cycles on surfaces](./surfacecycles/surfaceCycles.ipynb)
