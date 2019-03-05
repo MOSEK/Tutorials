@@ -21,6 +21,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Optimization of cycles on surfaces](./surfacecycles/surfaceCycles.ipynb)
   * [Equilibrium of masses with springs](./equilibrium/equilibrium.ipynb)
   * [Exact planar cover](./exact-planar-cover/exactcover.ipynb)
+  * [Approximating uncertain inequalities](./approx-uncertain-ineq/hard_uncertain.ipynb)
   
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
