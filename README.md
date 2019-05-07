@@ -22,6 +22,9 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Equilibrium of masses with springs](./equilibrium/equilibrium.ipynb)
   * [Exact planar cover](./exact-planar-cover/exactcover.ipynb)
   * [Approximating uncertain inequalities](./approx-uncertain-ineq/hard_uncertain.ipynb)
+  * [Wasserstein barycenter](./wasserstein/wasserstein-bary.ipynb)
+  * [Wasserstein barycenter with regularization](./wasserstein/wasserstein-bary-reg.ipynb)
+
   
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
