@@ -24,6 +24,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Approximating uncertain inequalities](./approx-uncertain-ineq/hard_uncertain.ipynb)
   * [Wasserstein barycenter](./wasserstein/wasserstein-bary.ipynb)
   * [Wasserstein barycenter with regularization](./wasserstein/wasserstein-bary-reg.ipynb)
+  * [Utility based option pricing](./option-pricing/utility-option-pricing.ipynb)
 
   
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
