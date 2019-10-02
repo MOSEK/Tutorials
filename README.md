@@ -4,7 +4,7 @@ A collection of tutorials for the MOSEK package. Compatible with version 9 of MO
  
 The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
-## Python notebooks:
+## Notebooks:
 
   * [Introduction to Fusion](./fusion-intro/fusion.ipynb)
   * [Least squares regression](./leastsquares/regression-leastsquares.ipynb)
@@ -24,6 +24,8 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Approximating uncertain inequalities](./approx-uncertain-ineq/hard_uncertain.ipynb)
   * [Wasserstein barycenter](./wasserstein/wasserstein-bary.ipynb)
   * [Wasserstein barycenter with regularization](./wasserstein/wasserstein-bary-reg.ipynb)
+  * [Wasserstein barycenter (Julia)](./wasserstein-julia/wass-bary-julia.ipynb)
+  * [Wasserstein barycenter with regularization (Julia)](./wasserstein-julia/wass-bary-reg-julia.ipynb)
   * [Utility based option pricing](./option-pricing/utility-option-pricing.ipynb)
 
   
