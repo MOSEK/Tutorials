@@ -33,9 +33,6 @@ Many notebooks are accompanied by source code files and other material. Please b
 
 Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct viewing links are available on the [MOSEK website](https://mosek.com/documentation).
 
-## Julia Polyopt toolbox
-
-For a comprehensive `Julia` toolbox for `Polynomial Optimization` [click here](https://github.com/MOSEK/Polyopt.jl).
 
 -----------------------------------------------------------------------------------------------------
 
