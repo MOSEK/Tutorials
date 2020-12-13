@@ -1,12 +1,13 @@
 # MOSEK Tutorials
 
-A collection of tutorials for the MOSEK package. Compatible with version 9 of MOSEK. Tutorials compatible with version 8 can be found in the ``version8`` branch of this repository, https://github.com/MOSEK/Tutorials/tree/version8.
- 
+A collection of tutorials for the MOSEK package. Compatible with version 9 of MOSEK.
+
 The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
 ## Notebooks:
 
   * [Introduction to Fusion](./fusion-intro/fusion.ipynb)
+  * [Small online example](./online/trymosek.ipynb) [Run in Google Colab!](https://colab.research.google.com/github/MOSEK/Tutorials/blob/master/online/trymosek.ipynb)
   * [Least squares regression](./leastsquares/regression-leastsquares.ipynb)
   * [Linear regression techniques](./regression/regression.ipynb)
   * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
