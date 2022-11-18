@@ -28,8 +28,8 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Wasserstein barycenter (Julia)](./wasserstein-julia/wass-bary-julia.ipynb)
   * [Wasserstein barycenter with regularization (Julia)](./wasserstein-julia/wass-bary-reg-julia.ipynb)
   * [Utility based option pricing](./option-pricing/utility-option-pricing.ipynb)
+  * [Piecewise linear approximation of a convex function](./pwl-convex-approximation/pwl-convex-approximation.ipynb)
   * [Distributionally robust portfolio](./dist-robust-portfolio/Data-driven_distributionally_robust_portfolio.ipynb)
-
   
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
