@@ -1,6 +1,6 @@
 # MOSEK Tutorials
 
-A collection of tutorials for the MOSEK package. Compatible with version 9 of MOSEK.
+A collection of tutorials for the MOSEK package. Compatible with the current stable version of MOSEK.
 
 The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
@@ -15,6 +15,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Unit commitment](./unitcommitment/ucp.ipynb)
   * [SINR Optimization](./sinr-optimization/sinr-optimization.ipynb)
   * [Filter design](./filterdesign/filterdesign.ipynb)
+  * [K-means and Euclidean Clustering](./kmeans-clustering/kmeans.ipynb)
   * [Binary quadratic problems](./binary-quadratic/binquad.ipynb)
   * [Subcarrier and power allocation](./f-sparc/fsparc.ipynb)
   * [Geometric facility location](./facility-location/small_disks.ipynb)
