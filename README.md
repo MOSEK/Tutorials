@@ -12,6 +12,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Linear regression techniques](./regression/regression.ipynb)
   * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
   * [Risk parity portfolio selection](./portfolio-riskparity/riskparity.ipynb)
+  * [Irreducible Infeasible Subset (IIS)](./iis-deletion-filter/DeletionFilter.ipynb)  
   * [Unit commitment](./unitcommitment/ucp.ipynb)
   * [SINR Optimization](./sinr-optimization/sinr-optimization.ipynb)
   * [Filter design](./filterdesign/filterdesign.ipynb)
