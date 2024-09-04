@@ -1,6 +1,6 @@
 # MOSEK Tutorials
 
-A collection of tutorials for the MOSEK package. Compatible with the current stable version of MOSEK.
+A collection of tutorials for the MOSEK package. Compatible with Mosek 10.0 and 10.1.
 
 The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
