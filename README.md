@@ -11,8 +11,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Least squares regression](./leastsquares/regression-leastsquares.ipynb)
   * [Linear regression techniques](./regression/regression.ipynb)
   * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
-  * [Risk parity portfolio selection](./portfolio-riskparity/riskparity.ipynb)
-  * [Irreducible Infeasible Subset (IIS)](./iis-deletion-filter/DeletionFilter.ipynb)  
+  * [Irreducible Infeasible Subset (IIS)](./iis-deletion-filter/DeletionFilter.ipynb)
   * [Unit commitment](./unitcommitment/ucp.ipynb)
   * [SINR Optimization](./sinr-optimization/sinr-optimization.ipynb)
   * [Filter design](./filterdesign/filterdesign.ipynb)
@@ -32,7 +31,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Utility based option pricing](./option-pricing/utility-option-pricing.ipynb)
   * [Piecewise linear approximation of a convex function](./pwl-convex-approximation/pwl-convex-approximation.ipynb)
   * [Distributionally robust portfolio](./dist-robust-portfolio/Data-driven_distributionally_robust_portfolio.ipynb)
-  
+
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
 Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct viewing links are available on the [MOSEK website](https://mosek.com/documentation).

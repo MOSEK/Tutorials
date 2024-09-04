@@ -3,6 +3,7 @@ import numpy as np
 from scipy.special import erfinv
 import matplotlib.pyplot as plt
 from mosek.fusion import *
+import mosek.fusion.pythonic
 
 
 def normal_returns(m, N):
@@ -39,29 +40,27 @@ class DistributionallyRobustPortfolio:
         t = M.variable('Tau')
         ##### OBJECTIVE #####
         # certificate = lamda*epsilon + sum(s)/N
-        certificate = Expr.add(Expr.mul(eps, l),
-                               Expr.mul(1/N, Expr.sum(s)))
+        certificate = eps * l + Expr.sum(s) / N
         M.objective('J_N(e)', ObjectiveSense.Minimize, certificate)
         ##### CONSTRAINTS #####
         # b_k*t
-        e1 = Expr.transpose(Expr.repeat(Expr.mul(t, b_k), N, 1))
+        e1 = Expr.repeat(t * b_k, N, 1).T
         # a_k*<x,xi>
-        e2 = Expr.hstack([Expr.mul(a_k[i], Expr.mul(dat, x))
-                          for i in range(2)])
+        e2 = Expr.hstack([a_k[i] * (dat @ x) for i in range(2)])
         # b_k*t + a_k*<x,xi> <= s
-        M.constraint('C1', Expr.add(
-            [e1, e2, Expr.neg(Expr.repeat(s, 2, 1))]), Domain.lessThan(0.0))
+        M.constraint('C1', e1 + e2 <= Expr.repeat(s, 2, 1))
         # a_k*x
-        e3 = Expr.hstack([Expr.mul(a_k[i], x) for i in range(2)])
+        e3 = Expr.hstack([a_k[i] * x for i in range(2)])
         e4 = Expr.repeat(Expr.repeat(l, m, 0), 2, 1)
-        # ||a_k*x|| <= lambda
-        M.constraint('C2_pos', Expr.sub(e3, e4), Domain.lessThan(0.0))
-        M.constraint('C2_neg', Expr.add(e3, e4), Domain.greaterThan(0.0))
+        # ||a_k*x||_infty <= lambda
+        M.constraint('C2_pos', e4 >= e3)
+        M.constraint('C2_neg', e4 >= -e3)
         # x \in X
-        M.constraint('C3', Expr.sum(x), Domain.equalsTo(1.0))
+        M.constraint('C3', Expr.sum(x) == 1)
         # Use the simplex optimizer
         M.setSolverParam('optimizer', 'freeSimplex')
         return M
+
 
     def sample_average(self, x, t, data):
         '''

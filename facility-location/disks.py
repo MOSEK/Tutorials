@@ -6,55 +6,56 @@ Content: Geometric facility location - planar disk coverage problems. Mixed inte
 '''
 
 from mosek.fusion import *
+import mosek.fusion.pythonic
 import numpy as np
 import sys
 
 def basicModel(k, P, bigM):
-	n, dim = len(P), len(P[0])
-	M = Model("disks")
-	R = M.variable(k, Domain.greaterThan(0.0))
-	X = M.variable([k,dim], Domain.unbounded())
-	S = M.variable([n,k], Domain.binary())
+    n, dim = len(P), len(P[0])                              #in P each row is one p_i
+    M = Model("balls")
+    R = M.variable(k, Domain.greaterThan(0.0))              #r_1...r_k
+    X = M.variable([k,dim], Domain.unbounded())             #each row is one x_j
+    S = M.variable([n,k], Domain.binary())
+   
+    RRep = Var.repeat(R, n)
+    Penalty = Expr.flatten(bigM * (1.0 - S))                #M*(1-S)
+    CoordDiff = np.repeat(P,k,0) - Var.repeat(X, n)         #each p_i meet each x_j once in Expr.sub
+  
+    M.constraint(Expr.hstack(RRep + Penalty, CoordDiff), Domain.inQCone())
 
-	RRep = Var.repeat(R, n)
-	Penalty = Expr.flatten(Expr.mul(bigM, Expr.sub(1.0, S)))
-	CoordDiff = Expr.sub(np.repeat(P,k,0), Var.repeat(X, n))
-
-	M.constraint(Expr.hstack(Expr.add(RRep,Penalty), CoordDiff), Domain.inQCone())
-
-	return M, R, X, S
+    return M, R, X, S
 
 def bigM(P):
 	return 2*np.shape(P)[1]*max(np.amax(P,0)-np.amin(P,0))
 
 def minimalEnclosing(P, dump=""):
-	M, R, X, S = basicModel(1, P, 0.0)
-	M.constraint(S, Domain.equalsTo(1.0))
-	M.objective(ObjectiveSense.Minimize, R.index(0))
-	M.solve()
-	return R.level(), X.level()
+    M, R, X, S = basicModel(1, P, 0.0)
+    M.constraint(S == 1.0)
+    M.objective(ObjectiveSense.Minimize, R[0])
+    M.solve()
+    return R.level(), X.level()
 
 def maxCoverage(P, rMax, dump=""):
-	M, R, X, S = basicModel(1, P, bigM(P))
-	M.constraint(R, Domain.equalsTo(rMax))
-	M.objective(ObjectiveSense.Maximize, Expr.sum(S))
-	M.solve()
-	return R.level(), X.level()
+    M, R, X, S = basicModel(1, P, bigM(P))
+    M.constraint(R <= rMax)
+    M.objective(ObjectiveSense.Maximize, Expr.sum(S))
+    M.solve()
+    return R.level(), X.level()
 
 def minDiamKCircleCover(P, k, dump=""):
-	M, R, X, S = basicModel(k, P, bigM(P))
-	M.constraint(Expr.sum(S,1), Domain.greaterThan(1.0))
-	M.objective(ObjectiveSense.Minimize, Expr.sum(R))
-	M.solve()
-	return R.level(), X.level()
+    M, R, X, S = basicModel(k, P, bigM(P))
+    M.constraint(Expr.sum(S,1) >= 1.0)                 #sum inside each row, i.e. along dimension 1
+    M.objective(ObjectiveSense.Minimize, Expr.sum(R))
+    M.solve()
+    return R.level(), X.level()
 
 def minAreaKCircleCover(P, k, dump=""):
-	M, R, X, S = basicModel(k, P, bigM(P))
-	t = M.variable(1, Domain.greaterThan(0.0))
-	M.constraint(Expr.vstack(t, R), Domain.inQCone())
-	M.constraint(Expr.sum(S,1), Domain.greaterThan(1.0))
-	M.objective(ObjectiveSense.Minimize, t)
-	if dump:
+    M, R, X, S = basicModel(k, P, bigM(P))
+    t = M.variable(1, Domain.greaterThan(0.0))             
+    M.constraint(Expr.vstack(t, R), Domain.inQCone())        #t>=sqrt(sum r_i^2)
+    M.constraint(Expr.sum(S,1) >= 1.0)
+    M.objective(ObjectiveSense.Minimize, t)
+    if dump:
 		M.writeTask("diskcover"+dump+".mps.gz")
 		return
 	else:
@@ -63,11 +64,11 @@ def minAreaKCircleCover(P, k, dump=""):
 	return R.level(), X.level()
 
 def maxKCoverage(P, k, rMax, dump=""):
-	M, R, X, S = basicModel(k, P, bigM(P))
-	M.constraint(R, Domain.equalsTo(rMax))
-	t = M.variable("t", len(P), Domain.binary())
-	M.constraint(Expr.sub(t, Expr.sum(S,1)), Domain.lessThan(0.0)) 
-	M.objective(ObjectiveSense.Maximize, Expr.sum(t))
+    M, R, X, S = basicModel(k, P, bigM(P))
+    M.constraint(R == rMax)
+    t = M.variable("t", len(P), Domain.binary())
+    M.constraint(t <= Expr.sum(S,1))                     #contains one inequality for each column
+    M.objective(ObjectiveSense.Maximize, Expr.sum(t))
 	if dump:
 		M.writeTask("diskcover"+dump+".mps.gz")
 		return

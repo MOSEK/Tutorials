@@ -11,6 +11,7 @@
 # See the accompanying notebook for description and comments
 
 from mosek.fusion import *
+import mosek.fusion.pythonic
 import numpy as np
 import heapq
 
@@ -22,12 +23,12 @@ def fusionSDP(Q, P, R):
     M = Model("fusionSDP")
     M.setSolverParam("numThreads", 1)   # For benchmarking
     Z = M.variable("Z", Domain.inPSDCone(n+1))
-    X = Z.slice([0,0], [n,n])
-    x = Z.slice([0,n], [n,n+1])
-    M.constraint(Expr.sub(X.diag(), x), Domain.equalsTo(0.))
-    M.constraint(Z.index(n,n), Domain.equalsTo(1.))
+    X = Z[0:n,0:n]
+    x = Z[0:n,n]
+    M.constraint(X.diag() == x)
+    M.constraint(Z[n,n] == 1)
 
-    M.objective(ObjectiveSense.Minimize, Expr.add([Expr.constTerm(R), Expr.dot(P,x), Expr.dot(Q,X)]))
+    M.objective(ObjectiveSense.Minimize, Expr.constTerm(R) + Expr.dot(P,x) + Expr.dot(Q,X))
 
     return M, x
 

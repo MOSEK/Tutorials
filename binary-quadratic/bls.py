@@ -8,6 +8,7 @@ import branchbound
 from branchbound import BB 
 
 from mosek.fusion import *
+import mosek.fusion.pythonic
 
 import concurrent.futures as con
 import sys, time, os
@@ -32,7 +33,7 @@ def blsMIP(A, b):
     M = Model()
     x = M.variable("x", n, Domain.binary())
     t = M.variable("t")
-    M.constraint(Expr.flatten(Expr.vstack(t, Expr.sub(Expr.mul(A,x),b))), Domain.inQCone())
+    M.constraint(Expr.flatten(Expr.vstack(t, A @ x - b)), Domain.inQCone())
     M.objective(ObjectiveSense.Minimize, t)
     return M, x
 
