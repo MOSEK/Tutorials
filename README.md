@@ -10,6 +10,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Small online example](./online/trymosek.ipynb), [[Run in Google Colab]](https://colab.research.google.com/github/MOSEK/Tutorials/blob/master/online/trymosek.ipynb)
   * [Least squares regression](./leastsquares/regression-leastsquares.ipynb)
   * [Linear regression techniques](./regression/regression.ipynb)
+  * [Hierarchical model](./hierarchical-model/hierarchical.py)
   * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
   * [Irreducible Infeasible Subset (IIS)](./iis-deletion-filter/DeletionFilter.ipynb)
   * [Unit commitment](./unitcommitment/ucp.ipynb)
