@@ -12,6 +12,7 @@ The provided material complements the official [MOSEK documentation](https://mos
   * [Linear regression techniques](./regression/regression.ipynb)
   * [Hierarchical model](./hierarchical-model/hierarchical.py)
   * [MLE convex density function](./mle-convex-density-function/MLEConvexDensityFunction.py)
+  * [GP Toolbox](./gp-toolbox/gptoolbox.py)
   * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
   * [Irreducible Infeasible Subset (IIS)](./iis-deletion-filter/DeletionFilter.ipynb)
   * [Unit commitment](./unitcommitment/ucp.ipynb)
