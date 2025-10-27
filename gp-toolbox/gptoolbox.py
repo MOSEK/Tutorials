@@ -1,23 +1,16 @@
 import marimo
 
-__generated_with = "0.12.2"
+__generated_with = "0.15.2"
 app = marimo.App(width="medium")
 
 
 @app.cell(hide_code=True)
-def _():
-    import marimo as mo
-    return (mo,)
-
-
-@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-        A *geometric program (GP)* is a type of mathematical optimization problem characterized by objective and constraint functions that have a special form. To describe the said special form, one will require the following definitions:
+    ![MOSEK ApS](https://www.mosek.com/static/images/branding/webgraphmoseklogocolor.png )
 
-        The smallest terms creating the GPs are called *monomials*.
-        """
+    """
     )
     return
 
@@ -26,24 +19,10 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Monomial functions
+    A *geometric program (GP)* is a type of mathematical optimization problem characterized by objective and constraint functions that have a special form. To describe the said special form, one will require the following definitions:
 
-        Let \( x_1, \dots, x_n \) denote \( n \) real positive variables, and \( x = (x_1, \dots, x_n) \) a vector with components \( x_i \). A real-valued function \( f \) of \( x \), with the form
-
-        \[
-        f(x) = c x_1^{a_1} x_2^{a_2} \cdots x_n^{a_n}
-        \]
-
-        where \( c > 0 \) and \( a_i \in \mathbb{R} \), is called a **monomial function**, or more informally, a **monomial** (of the variables \( x_1, \dots, x_n \)). We refer to the constant \( c \) as the **coefficient** of the monomial, and we refer to the constants \( a_1, \dots, a_n \) as the **exponents** of the monomial.
-
-        As an example, \( 2.3 x_1^2 x_2^{-0.15} \) is a monomial of the variables \( x_1 \) and \( x_2 \), with coefficient 2.3 and \( x_2 \)-exponent \( -0.15 \).
-
-        Any positive constant is a monomial, as is any variable. Monomials are closed under multiplication and division: if \( f \) and \( g \) are both monomials, then so are \( f * g \) and \( f / g \) (this includes scaling by any positive constant). A monomial raised to any power is also a monomial:
-
-        \[
-        f(x)^y = (c x_1^{a_1} x_2^{a_2} \cdots x_n^{a_n})^y = c^y x_1^{a_1 y} x_2^{a_2 y} \cdots x_n^{a_n y}
-        \]
-        """
+    The smallest terms creating the GPs are called *monomials*.
+    """
     )
     return
 
@@ -52,28 +31,24 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Posynomial functions
+    ## Monomial functions
 
-        A sum of one or more monomials, i.e., a function of the form
+    Let \( x_1, \dots, x_n \) denote \( n \) real positive variables, and \( x = (x_1, \dots, x_n) \) a vector with components \( x_i \). A real-valued function \( f \) of \( x \), with the form
 
-        $$
-        f(x) = \sum_{k=1}^{K} c_k x_1^{a_{1k}} x_2^{a_{2k}} \cdots x_n^{a_{nk}},
-        $$
+    \[
+    f(x) = c x_1^{a_1} x_2^{a_2} \cdots x_n^{a_n}
+    \]
 
-        where $c_k > 0$, is called a *posynomial function* or, more simply, a *posynomial* (with $K$ terms, in the variables $x_1, \ldots, x_n$). Any monomial is also a posynomial. 
+    where \( c > 0 \) and \( a_i \in \mathbb{R} \), is called a **monomial function**, or more informally, a **monomial** (of the variables \( x_1, \dots, x_n \)). We refer to the constant \( c \) as the **coefficient** of the monomial, and we refer to the constants \( a_1, \dots, a_n \) as the **exponents** of the monomial.
 
-        For example each of the following terms are monomials (thus also posynomials)
+    As an example, \( 2.3 x_1^2 x_2^{-0.15} \) is a monomial of the variables \( x_1 \) and \( x_2 \), with coefficient 2.3 and \( x_2 \)-exponent \( -0.15 \).
 
-        $$
-        0.5{x}{y}, \quad 2x^2\sqrt{z}, \quad xyz
-        $$
+    Any positive constant is a monomial, as is any variable. Monomials are closed under multiplication and division: if \( f \) and \( g \) are both monomials, then so are \( f * g \) and \( f / g \) (this includes scaling by any positive constant). A monomial raised to any power is also a monomial:
 
-        And the sumation of these monomials is a polynomial.
-
-        $$
-        0.5{x}{y} + 2x^2\sqrt{z} + xyz
-        $$
-        """
+    \[
+    f(x)^y = (c x_1^{a_1} x_2^{a_2} \cdots x_n^{a_n})^y = c^y x_1^{a_1 y} x_2^{a_2 y} \cdots x_n^{a_n y}
+    \]
+    """
     )
     return
 
@@ -82,25 +57,28 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Standard Form of a Geometric Program
+    ## Posynomial functions
 
-        A **Geometric Program (GP)** is an optimization problem of the following form:
+    A sum of one or more monomials, i.e., a function of the form
 
-        \[
-        \begin{aligned}
-        \text{minimize} \quad & f_0(x) \\
-        \text{subject to} \quad & f_i(x) \leq 1, \quad i = 1, \dots, m \\
-        & x_j > 0, \quad j = 1, \dots, n
-        \end{aligned}
-        \]
+    $$
+    f(x) = \sum_{k=1}^{K} c_k x_1^{a_{1k}} x_2^{a_{2k}} \cdots x_n^{a_{nk}},
+    $$
 
-        Where:
+    where $c_k > 0$, is called a *posynomial function* or, more simply, a *posynomial* (with $K$ terms, in the variables $x_1, \ldots, x_n$). Any monomial is also a posynomial. 
 
-        - \( f_0 : \mathbb{R}_{+}^n \to \mathbb{R}_{+} \) is a **posynomial objective function**,
-        - Each \( f_i : \mathbb{R}_{+}^n \to \mathbb{R}_+ \) is a **posynomial inequality constraint**.
+    For example each of the following terms are monomials (thus also posynomials)
 
-        The problem is **not convex** in this form due to the nonlinear structure of monomials and posynomials. However, it can be convexified using a logarithmic transformation and can also be represented in an exponential cone. The next section provides a tool that solves the geometric programs, handling the transformations automatically.
-        """
+    $$
+    0.5{x}{y}, \quad 2x^2\sqrt{z}, \quad xyz
+    $$
+
+    And the sumation of these monomials is a polynomial.
+
+    $$
+    0.5{x}{y} + 2x^2\sqrt{z} + xyz
+    $$
+    """
     )
     return
 
@@ -109,40 +87,67 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Geometric Programming Tool
+    ## Standard Form of a Geometric Program
 
-        The tool initializes an optimization model and provides the following core functions for model construction and analysis:
+    A **Geometric Program (GP)** is an optimization problem of the following form:
 
-        - **`printModel()`** — Outputs the current model structure in a readable format.
-        - **`addObjective(Monomial)`** — Defines and adds the objective function to the model.
-        - **`addConstraint(List of Monomials)`** — Adds one or more constraints to the model formulation.
-        - **`Solve()`** — Solves the model once all components (objective and constraints) are defined.
-        - **`analyse()`** — Prints key specifications and diagnostics of the model.
-        - **`evaluateObjective()`** — Computes the value of the objective function for the obtained solution.
+    \[
+    \begin{aligned}
+    \text{minimize} \quad & f_0(x) \\
+    \text{subject to} \quad & f_i(x) \leq 1, \quad i = 1, \dots, m \\
+    & x_j > 0, \quad j = 1, \dots, n
+    \end{aligned}
+    \]
 
-        The class and function definitions, as well as the model implementation, can be found in the Appendix.
+    Where:
 
-        With only using these functionalities, one can solve a geometric program without further implementation. Let's go over an example. Say we model the following problem: 
+    - \( f_0 : \mathbb{R}_{+}^n \to \mathbb{R}_{+} \) is a **posynomial objective function**,
+    - Each \( f_i : \mathbb{R}_{+}^n \to \mathbb{R}_+ \) is a **posynomial inequality constraint**.
 
-        $\quad\quad\quad$ Minimize:
-
-        $$
-        x + y^2 z
-        $$
-
-        $\quad\quad\quad$ Subject to:
-
-        $$
-        0.1\sqrt{x} + 2y^{-1} \leq 1,
-        $$
-
-        $$
-        z^{-1} + yx^{-2} \leq 1.
-        $$
+    The problem is **not convex** in this form due to the nonlinear structure of monomials and posynomials. However, it can be convexified using a logarithmic transformation and can also be represented in an exponential cone. The next section provides a tool that solves the geometric programs, handling the transformations automatically.
+    """
+    )
+    return
 
 
-        To initialize a geometric program, call the *GeometricProgramming(m,n)* class, with inputs m = number of constraint, n = number of variables.
-        """
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ## Geometric Programming Tool
+
+    The tool initializes an optimization model and provides the following core functions for model construction and analysis:
+
+    - **`printModel()`** — Outputs the current model structure in a readable format.
+    - **`addObjective(Monomial)`** — Defines and adds the objective function to the model.
+    - **`addConstraint(List of Monomials)`** — Adds one or more constraints to the model formulation.
+    - **`Solve()`** — Solves the model once all components (objective and constraints) are defined.
+    - **`analyse()`** — Prints key specifications and diagnostics of the model.
+    - **`evaluateObjective()`** — Computes the value of the objective function for the obtained solution.
+
+    The class and function definitions, as well as the model implementation, can be found in the Appendix.
+
+    With only using these functionalities, one can solve a geometric program without further implementation. Let's go over an example. Say we model the following problem: 
+
+    $\quad\quad\quad$ Minimize:
+
+    $$
+    x + y^2 z
+    $$
+
+    $\quad\quad\quad$ Subject to:
+
+    $$
+    0.1\sqrt{x} + 2y^{-1} \leq 1,
+    $$
+
+    $$
+    z^{-1} + yx^{-2} \leq 1.
+    $$
+
+
+    To initialize a geometric program, call the *GeometricProgramming(m,n)* class, with inputs m = number of constraint, n = number of variables.
+    """
     )
     return
 
@@ -157,17 +162,17 @@ def _(GeometricProgramming):
 def _(mo):
     mo.md(
         """
-        The objective function in a geometric program is, by definition, minimized. The `addObjective([Monomial, ...])` function accepts either a single `Monomial` object or a list of `Monomial` objects as input.
+    The objective function in a geometric program is, by definition, minimized. The `addObjective([Monomial, ...])` function accepts either a single `Monomial` object or a list of `Monomial` objects as input.
 
-        A `Monomial` object can be constructed using the following method:
+    A `Monomial` object can be constructed using the following method:
 
-        `Monomial.add(coefficient, indices, alphas)`
+    `Monomial.add(coefficient, indices, alphas)`
 
-        - **`coefficient`**: \( c \), a positive scalar  
-        - **`indices`**: an array of selected variable indices \( i \in \{1, \dots, N\} \)  
-          _Example_: To add a monomial involving \( y \) and \( z \) from the list \( x, y, z, w \), input `indices = [1,2]`  
-        - **`alphas`**: an array of exponents \( a_i \) corresponding to each selected variable
-        """
+    - **`coefficient`**: $c$, a positive scalar  
+    - **`indices`**: an array of selected variable indices $i  \{1, \dots, N\}$  
+      _Example_: To add a monomial involving $y$ and $z$ from the list $x, y, z, w$, input `indices = [1,2]`  
+    - **`alphas`**: an array of exponents $a_i$ corresponding to each selected variable
+    """
     )
     return
 
@@ -185,10 +190,10 @@ def _(Monomial, gp):
 def _(mo):
     mo.md(
         r"""
-        By definition, all constraint posynomials in a geometric program must be less than or equal to 1. Similar to the objective function, constraints can be added using the `addConstraint(constraintIndex, [Monomial, ...])` function. 
+    By definition, all constraint posynomials in a geometric program must be less than or equal to 1. Similar to the objective function, constraints can be added using the `addConstraint(constraintIndex, [Monomial, ...])` function. 
 
-        This function accepts a constraint index and either a single `Monomial` object or a list of `Monomial` objects as input. Monomials can be added individually or collectively in a single call.
-        """
+    This function accepts a constraint index and either a single `Monomial` object or a list of `Monomial` objects as input. Monomials can be added individually or collectively in a single call.
+    """
     )
     return
 
@@ -225,10 +230,10 @@ def _(gp):
 def _(mo):
     mo.md(
         """
-        Once the entire model has been defined, the problem can be solved using the `Solve()` function. This function returns both the solution object and the values of the decision variables. If needed, the user can further interact with the solution object for additional information.
+    Once the entire model has been defined, the problem can be solved using the `Solve()` function. This function returns both the solution object and the values of the decision variables. If needed, the user can further interact with the solution object for additional information.
 
-        Using the retrieved decision variable values, the user can also compute the objective function value.
-        """
+    Using the retrieved decision variable values, the user can also compute the objective function value.
+    """
     )
     return
 
@@ -253,7 +258,7 @@ def _(gp, np, sol, variables):
     print("Optimal values of (x_i):")
     for i, val in enumerate(sol):
         print(f"x_{i} = {np.exp(val):.6f}")
-    return i, obj_val, val
+    return
 
 
 @app.cell(hide_code=True)
@@ -266,20 +271,20 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        Writing well-structured geometric programs can sometimes be a non-trivial task. To assist with this, the analyse() function is included in the tool. This function provides a comprehensive summary and diagnostic of the model, helping users identify potential issues before solving.
+    Writing well-structured geometric programs can sometimes be a non-trivial task. To assist with this, the analyse() function is included in the tool. This function provides a comprehensive summary and diagnostic of the model, helping users identify potential issues before solving.
 
-        - **Constraints and Variables**: Prints the total number of constraints and decision variables.
-        - **Monomial Coefficients**: Shows the range of monomial coefficients (min–max), if any are added.
-        - **Alpha Values**: Displays the range of non-zero absolute exponent values (alphas).
-        - **Degree of Difficulty**: `totalMonomials - number of variables - 1`
-        - **Variable Sign Check**: Issues warnings if a variable appears only with positive or only with negative exponents in all monomials, which helps identify potential modeling issues.
+    - **Constraints and Variables**: Prints the total number of constraints and decision variables.
+    - **Monomial Coefficients**: Shows the range of monomial coefficients (min–max), if any are added.
+    - **Alpha Values**: Displays the range of non-zero absolute exponent values (alphas).
+    - **Degree of Difficulty**: `totalMonomials - number of variables - 1`
+    - **Variable Sign Check**: Issues warnings if a variable appears only with positive or only with negative exponents in all monomials, which helps identify potential modeling issues.
 
-        <ins>Variable Sign Check</ins> is a critical part of the model analysis, as it determines the potential solvability issues of the geometric program and can often be overlooked.
+    <ins>Variable Sign Check</ins> is a critical part of the model analysis, as it determines the potential solvability issues of the geometric program and can often be overlooked.
 
-        If, for a decision variable, all the defined alpha values (exponents) have the same sign—either all positive or all negative—this may indicate a structural issue in the model that could hinder its solvability. When such a problem is encountered, the analyser function can help the user to identify the problem. 
+    If, for a decision variable, all the defined alpha values (exponents) have the same sign—either all positive or all negative—this may indicate a structural issue in the model that could hinder its solvability. When such a problem is encountered, the analyser function can help the user to identify the problem. 
 
-        Let's look at an example that illustrates this issue. Firstly the model below displays an example where the decision variable $x$ combines both positive and negative alpha values. Therefore, MOSEK can retrieve the optimal solution easily.
-        """
+    Let's look at an example that illustrates this issue. Firstly the model below displays an example where the decision variable $x$ combines both positive and negative alpha values. Therefore, MOSEK can retrieve the optimal solution easily.
+    """
     )
     return
 
@@ -293,7 +298,7 @@ def _(GeometricProgramming, Monomial):
 
     gp2.printModel()
     sol2,variables2 = gp2.Solve() #solve the model
-    return gp2, sol2, variables2
+    return (gp2,)
 
 
 @app.cell(hide_code=True)
@@ -321,7 +326,7 @@ def _(GeometricProgramming, Monomial):
 
     gp3.printModel()
     sol3,variables3 = gp3.Solve() #solve the model
-    return gp3, sol3, variables3
+    return (gp3,)
 
 
 @app.cell(hide_code=True)
@@ -350,17 +355,17 @@ def _(GeometricProgramming, Monomial):
     gp4.printModel()
     sol4,variables4 = gp4.Solve() #solve the model
     gp4.analyse()
-    return gp4, sol4, variables4
+    return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-        Although this property can sometimes prevent a model from being solvable, there are cases where it can still be handled correctly. The following example presents a model with two decision variables, one of which appears only with positive exponents. In this case, due to the structure of the feasible region, an optimal solution exists. 
+    Although this property can sometimes prevent a model from being solvable, there are cases where it can still be handled correctly. The following example presents a model with two decision variables, one of which appears only with positive exponents. In this case, due to the structure of the feasible region, an optimal solution exists. 
 
-        Nevertheless, this property should be treated as a potential risk and considered a diagnostic checkpoint, especially if the model fails. It can be flagged using the analyser function for early detection.
-        """
+    Nevertheless, this property should be treated as a potential risk and considered a diagnostic checkpoint, especially if the model fails. It can be flagged using the analyser function for early detection.
+    """
     )
     return
 
@@ -376,40 +381,40 @@ def _(GeometricProgramming, Monomial):
     gp5.printModel()
     sol5,variables5 = gp5.Solve() #solve the model
     gp5.analyse()
-    return gp5, sol5, variables5
+    return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-        ## Further Details
+    ## Further Details
 
-        As explained earlier, the problem is non-convex. To solve the problem, the following transformation from the non-convex form to an exponential cone representation can be applied, which is already handled by the geometric programming class.
+    As explained earlier, the problem is non-convex. To solve the problem, the following transformation from the non-convex form to an exponential cone representation can be applied, which is already handled by the geometric programming class.
 
-        ### Logarithmic Transformation (Convexification)
+    ### Logarithmic Transformation (Convexification)
 
-        To reformulate a GP as a **convex problem**, we apply a change of variables:
+    To reformulate a GP as a **convex problem**, we apply a change of variables:
 
-        \[
-        x_j = e^{y_j} \quad \text{for } j = 1, \dots, n
-        \quad \Rightarrow \quad x = e^y, \quad y \in \mathbb{R}^n
-        \]
+    \[
+    x_j = e^{y_j} \quad \text{for } j = 1, \dots, n
+    \quad \Rightarrow \quad x = e^y, \quad y \in \mathbb{R}^n
+    \]
 
-        A **monomial** becomes:
+    A **monomial** becomes:
 
-        \[
-        f(x) = c \cdot e^{a^T y} \quad \Rightarrow \quad \log f(x) = \log c + a^T y
-        \]
+    \[
+    f(x) = c \cdot e^{a^T y} \quad \Rightarrow \quad \log f(x) = \log c + a^T y
+    \]
 
-        A **posynomial** becomes:
+    A **posynomial** becomes:
 
-        \[
-        f(x) = \sum_{k=1}^K c_k \cdot e^{a_k^T y} \quad \Rightarrow \quad \log f(x) = \log \left( \sum_{k=1}^K \exp(a_k^T y + \log c_k) \right)
-        \]
+    \[
+    f(x) = \sum_{k=1}^K c_k \cdot e^{a_k^T y} \quad \Rightarrow \quad \log f(x) = \log \left( \sum_{k=1}^K \exp(a_k^T y + \log c_k) \right)
+    \]
 
-        This is known as the **log-sum-exp function**, which is a **convex** function of \( y \in \mathbb{R}^n \).
-        """
+    This is known as the **log-sum-exp function**, which is a **convex** function of \( y \in \mathbb{R}^n \).
+    """
     )
     return
 
@@ -418,20 +423,20 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ### Convex Reformulation
+    ### Convex Reformulation
 
-        The original GP is now transformed into the following **convex optimization problem**:
+    The original GP is now transformed into the following **convex optimization problem**:
 
-        \[
-        \begin{aligned}
-        \text{minimize} \quad & t \\
-        \text{subject to} \quad & \log\left( \sum_{k=1}^{K_0} \exp(a_k^{(0)\top} y + \log c_k^{(0)}) \right) \leq t \\
-        & \log\left( \sum_{k=1}^{K_i} \exp(a_k^{(i)\top} y + \log c_k^{(i)}) \right) \leq 0, \quad i = 1, \dots, m
-        \end{aligned}
-        \]
+    \[
+    \begin{aligned}
+    \text{minimize} \quad & t \\
+    \text{subject to} \quad & \log\left( \sum_{k=1}^{K_0} \exp(a_k^{(0)\top} y + \log c_k^{(0)}) \right) \leq t \\
+    & \log\left( \sum_{k=1}^{K_i} \exp(a_k^{(i)\top} y + \log c_k^{(i)}) \right) \leq 0, \quad i = 1, \dots, m
+    \end{aligned}
+    \]
 
-        Where \( t \in \mathbb{R} \) is a **scalar upper bound variable**.
-        """
+    Where \( t \in \mathbb{R} \) is a **scalar upper bound variable**.
+    """
     )
     return
 
@@ -440,46 +445,46 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ### Exponential Cone Representation
+    ### Exponential Cone Representation
 
-        The objective function constraint of the form:
+    The objective function constraint of the form:
 
-        \[
-        \log\left( \sum_{k=1}^{K_0} \exp(a_k^{(0)\top} y + \log c_k^{(0)}) \right) \leq t
-        \]
+    \[
+    \log\left( \sum_{k=1}^{K_0} \exp(a_k^{(0)\top} y + \log c_k^{(0)}) \right) \leq t
+    \]
 
-        can be equivalently written as:
+    can be equivalently written as:
 
-        \[
-        \sum_{k} u_k \leq 1, \quad \text{with} \quad (u_k, 1, (a_k^{(0)\top} y + \log c_k^{(0)} - \tau) \in \mathcal{K}_{\exp}
-        \]
+    \[
+    \sum_{k} u_k \leq 1, \quad \text{with} \quad (u_k, 1, (a_k^{(0)\top} y + \log c_k^{(0)} - \tau) \in \mathcal{K}_{\exp}
+    \]
 
-        Where:
+    Where:
 
-        \[
-        \mathcal{K}_{\exp} := \left\{ (x, y, z) \in \mathbb{R}^3 \;\middle|\; y > 0,\; y \cdot e^{x/y} \leq z \right\}
-        \]
+    \[
+    \mathcal{K}_{\exp} := \left\{ (x, y, z) \in \mathbb{R}^3 \;\middle|\; y > 0,\; y \cdot e^{x/y} \leq z \right\}
+    \]
 
-        And each constraint of the form:
+    And each constraint of the form:
 
-        \[
-        \log\left( \sum_{k=1}^{K_i} \exp\left(a_k^{(i)\top} y + \log c_k^{(i)}\right) \right) \leq 0
-        \]
+    \[
+    \log\left( \sum_{k=1}^{K_i} \exp\left(a_k^{(i)\top} y + \log c_k^{(i)}\right) \right) \leq 0
+    \]
 
-        can be equivalently written as:
+    can be equivalently written as:
 
-        \[
-        \sum_k u_k \leq 1, \quad \text{with} \quad (u_k, 1, a_k^{(i)\top} y + \log c_k^{(i)}) \in \mathcal{K}_{\exp}
-        \]
+    \[
+    \sum_k u_k \leq 1, \quad \text{with} \quad (u_k, 1, a_k^{(i)\top} y + \log c_k^{(i)}) \in \mathcal{K}_{\exp}
+    \]
 
-        Where:
+    Where:
 
-        \[
-        \mathcal{K}_{\exp} := \left\{ (x, y, z) \in \mathbb{R}^3 \;\middle|\; y > 0,\; y \cdot e^{x/y} \leq z \right\}
-        \]
+    \[
+    \mathcal{K}_{\exp} := \left\{ (x, y, z) \in \mathbb{R}^3 \;\middle|\; y > 0,\; y \cdot e^{x/y} \leq z \right\}
+    \]
 
-        This transforms the log-sum-exp constraint into a set of **conic constraints**, using **auxiliary variables** \( u_k \) and the **exponential cone**.
-        """
+    This transforms the log-sum-exp constraint into a set of **conic constraints**, using **auxiliary variables** \( u_k \) and the **exponential cone**.
+    """
     )
     return
 
@@ -488,25 +493,25 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ---
-        Then we can apply this transformation to our original model: 
+    ---
+    Then we can apply this transformation to our original model: 
 
-        $\quad\quad\quad$ Minimize:
+    $\quad\quad\quad$ Minimize:
 
-        $$
-        x + y^2 z
-        $$
+    $$
+    x + y^2 z
+    $$
 
-        $\quad\quad\quad$ Subject to:
+    $\quad\quad\quad$ Subject to:
 
-        $$
-        0.1\sqrt{x} + 2y^{-1} \leq 1,
-        $$
+    $$
+    0.1\sqrt{x} + 2y^{-1} \leq 1,
+    $$
 
-        $$
-        z^{-1} + yx^{-2} \leq 1.
-        $$
-        """
+    $$
+    z^{-1} + yx^{-2} \leq 1.
+    $$
+    """
     )
     return
 
@@ -515,12 +520,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        Let:
+    Let:
 
-        \[
-        x = e^u, \quad y = e^v, \quad z = e^w
-        \]
-        """
+    \[
+    x = e^u, \quad y = e^v, \quad z = e^w
+    \]
+    """
     )
     return
 
@@ -529,29 +534,29 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        Then we can apply the following transformation:
+    Then we can apply the following transformation:
 
 
-        $\quad\quad\quad$ Minimize:
+    $\quad\quad\quad$ Minimize:
 
-        \[
-        t
-        \]
+    \[
+    t
+    \]
 
-        $\quad\quad\quad$ Subject to:
+    $\quad\quad\quad$ Subject to:
 
-        \[
-        \log\left(e^u + e^{2v + w}\right) \leq t
-        \]
+    \[
+    \log\left(e^u + e^{2v + w}\right) \leq t
+    \]
 
-        \[
-        \log\left(0.1e^{u/2} + 2e^{-v}\right) \leq 0
-        \]
+    \[
+    \log\left(0.1e^{u/2} + 2e^{-v}\right) \leq 0
+    \]
 
-        \[
-        \log\left(e^{-w} + e^{v - 2u}\right) \leq 0
-        \]
-        """
+    \[
+    \log\left(e^{-w} + e^{v - 2u}\right) \leq 0
+    \]
+    """
     )
     return
 
@@ -560,26 +565,26 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        $\quad\quad\quad$ Minimize:
+    $\quad\quad\quad$ Minimize:
 
-        \[
-        t
-        \]
+    \[
+    t
+    \]
 
-        $\quad\quad\quad$ Subject to:
+    $\quad\quad\quad$ Subject to:
 
-        \[
-        (p_1, 1, u - t), \quad (q_1, 1, 2v + w - t) \in \mathcal{K}_{\exp}, \quad p_1 + q_1 \leq 1,
-        \]
+    \[
+    (p_1, 1, u - t), \quad (q_1, 1, 2v + w - t) \in \mathcal{K}_{\exp}, \quad p_1 + q_1 \leq 1,
+    \]
 
-        \[
-        (p_2, 1, 0.5u + \log(0.1)), \quad (q_2, 1, -v + \log(2)) \in \mathcal{K}_{\exp}, \quad p_2 + q_2 \leq 1,
-        \]
+    \[
+    (p_2, 1, 0.5u + \log(0.1)), \quad (q_2, 1, -v + \log(2)) \in \mathcal{K}_{\exp}, \quad p_2 + q_2 \leq 1,
+    \]
 
-        \[
-        (p_3, 1, -w), \quad (q_3, 1, v - 2u) \in \mathcal{K}_{\exp}, \quad p_3 + q_3 \leq 1.
-        \]
-        """
+    \[
+    (p_3, 1, -w), \quad (q_3, 1, v - 2u) \in \mathcal{K}_{\exp}, \quad p_3 + q_3 \leq 1.
+    \]
+    """
     )
     return
 
@@ -588,16 +593,16 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## 8. Summary of Variable Domains
+    ## 8. Summary of Variable Domains
 
-        | Symbol | Meaning | Domain |
-        |--------|---------|--------|
-        | \( x \) | Original decision variables | \( \mathbb{R}_{+}^n \) |
-        | \( y \) | Log-transformed variables \( y = \log x \) | \( \mathbb{R}^n \) |
-        | \( c_k \) | Monomial/posynomial coefficients | \( \mathbb{R}_{+} \) |
-        | \( a_k \) | Monomial exponents | \( \mathbb{R}^n \) |
-        | \( t \) | Scalar upper bound variable | \( \mathbb{R} \) |
-        """
+    | Symbol | Meaning | Domain |
+    |--------|---------|--------|
+    | \( x \) | Original decision variables | \( \mathbb{R}_{+}^n \) |
+    | \( y \) | Log-transformed variables \( y = \log x \) | \( \mathbb{R}^n \) |
+    | \( c_k \) | Monomial/posynomial coefficients | \( \mathbb{R}_{+} \) |
+    | \( a_k \) | Monomial exponents | \( \mathbb{R}^n \) |
+    | \( t \) | Scalar upper bound variable | \( \mathbb{R} \) |
+    """
     )
     return
 
@@ -606,12 +611,12 @@ def _(mo):
 def _(mo):
     mo.md(
         """
-        ## References
+    ## References
 
-        Some of the definitions used in this notebook are taken from the work [A Tutorial on Geometric Programming](https://stanford.edu/~boyd/papers/pdf/gp_tutorial.pdf) by Boyd et al.
+    Some of the definitions used in this notebook are taken from the work [A Tutorial on Geometric Programming](https://stanford.edu/~boyd/papers/pdf/gp_tutorial.pdf) by Boyd et al.
 
-        You can also read more about Geometric Programming and the example used in the [MOSEK Modeling Cookbook](https://docs.mosek.com/modeling-cookbook/expo.html#geometric-programming).
-        """
+    You can also read more about Geometric Programming and the example used in the [MOSEK Modeling Cookbook](https://docs.mosek.com/modeling-cookbook/expo.html#geometric-programming).
+    """
     )
     return
 
@@ -863,16 +868,19 @@ def _():
                 print("Problem Status: ", ProblemStatus)
 
             return sol, vars
-    return (
-        Domain,
-        Expr,
-        GeometricProgramming,
-        Model,
-        Monomial,
-        ObjectiveSense,
-        mosek,
-        np,
-    )
+    return GeometricProgramming, Monomial, np
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The **MOSEK** logo and name are trademarks of <a href="http://mosek.com">Mosek ApS</a>. The code is provided as-is. Compatibility with future release of **MOSEK** or the `Fusion API` are not guaranteed. For more information contact our [support](mailto:support@mosek.com).""")
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 if __name__ == "__main__":

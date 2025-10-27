@@ -1,11 +1,17 @@
 import marimo
 
-__generated_with = "0.9.33"
+__generated_with = "0.15.2"
 app = marimo.App(width="medium")
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""![MOSEK ApS](https://www.mosek.com/static/images/branding/webgraphmoseklogocolor.png )""")
+    return
+
+
 @app.cell
-def __():
+def _():
     from mosek.fusion import Model, Domain, Expr, ObjectiveSense
     import mosek.fusion.pythonic
     import time
@@ -14,60 +20,57 @@ def __():
     import marimo as mo
     import sys
     np.random.seed(5)
-    return (
-        Domain,
-        Expr,
-        Model,
-        ObjectiveSense,
-        mo,
-        mosek,
-        np,
-        plt,
-        sys,
-        time,
-    )
+    return Domain, Expr, Model, ObjectiveSense, mo, np, plt, time
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md(
-        """
-        Hierarchical model structure allows users to consider multiple objectives, and the trade-offs in their models with a simple approach. 
+        r"""
+    Hierarchical model structure allows users to consider multiple objectives, and the trade-offs in their models with a simple approach. 
 
-        In health-care scheduling it is not unsual to see objectives with more than one focus points. And in this example, we are showing a hierarchical model structure where the decisions are made minimizing the overall cost while increasing the overall affinity. 
+    In health-care scheduling it is not unusual to see objectives with more than one focus points. And in this example, we are showing a hierarchical model structure where the decisions are made minimizing the overall cost while increasing the overall affinity. 
 
-        Let's say we want to assign a set of healthcare workers, $w \in W$, to a set of patients, $p \in P$. For simplicity, the set sizes of both groups are the same, and the assignments of healthcare workers to patients are done one-to-one. For each worker assigned to a particular patient, there is a cost of assignment, $c_{wp}$. And the proximity of workers to patients is measured with the affinity parameter, $a_{wp}$. 
-
-        Firstly, we prioritize to minimize the costs, and do not consider the affinity measure. Then, we have a basic assignment problem on hand. Which can be modeled as follows: 
-
-        $$
-        min \quad z = \sum_{w \in W} \sum_{p \in P} c_{wp} x_{wp}  
-        $$
+    Let's say we want to assign a set of healthcare workers, $w \in W$, to a set of patients, $p \in P$. For simplicity, the set sizes of both groups are the same, and the assignments of healthcare workers to patients are done one-to-one. For each worker assigned to a particular patient, there is a cost of assignment, $c_{wp}$. And the proximity of workers to patients is measured with the affinity parameter, $a_{wp}$. 
+    """
+    )
+    return
 
 
-        $$s.t. \sum_{w \in W} x_{wp} = 1 \quad \quad p \in P \quad\quad\quad (1)$$
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Firstly, we prioritize to minimize the costs, and do not consider the affinity measure. Then, we have a basic assignment problem on hand. Which can be modeled as follows: 
+
+    $$
+    min \quad z = \sum_{w \in W} \sum_{p \in P} c_{wp} x_{wp}  
+    $$
 
 
-        $$
-        \sum_{p \in P} x_{wp} = 1 \quad\quad w\in W \quad\quad\quad (2)
-        $$
+    $$s.t. \sum_{w \in W} x_{wp} = 1 \quad \quad p \in P \quad\quad\quad (1)$$
 
-        $$
-        x_{wp} \in \{0, 1\} \quad w \in W, \, p \in P
-        $$
-        """
+
+    $$
+    \sum_{p \in P} x_{wp} = 1 \quad\quad w\in W \quad\quad\quad (2)
+    $$
+
+    $$
+    x_{wp} \in \{0, 1\} \quad w \in W, \, p \in P
+    $$
+    """
     )
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md("""Let's define the model using MOSEK Fusion API.""")
     return
 
 
 @app.cell
-def __(Domain, Expr, Model, ObjectiveSense, cost, ones):
+def _(Domain, Expr, Model, ObjectiveSense, cost, ones):
     def minCostModel(N):
         #Create the model, we call it M here, by calling the Model class
         M = Model()
@@ -103,85 +106,85 @@ def __(Domain, Expr, Model, ObjectiveSense, cost, ones):
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md("""The initial model can now be implemented. Firstly, select the number of desired workers and patients.""")
     return
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     NodeSize = mo.ui.number(10)
     mo.md(f"Choose the number of workers/patients: {NodeSize})")
     return (NodeSize,)
 
 
 @app.cell(hide_code=True)
-def __(NodeSize):
+def _(NodeSize):
     N = NodeSize.value
     return (N,)
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md("""Then, let's generate a data to use in our model. We randomly generate the cost matrix using a uniform distribution.""")
     return
 
 
 @app.cell
-def __(N, np):
+def _(N, np):
     cost = np.random.uniform(low=10, high=50, size=(N, N))
     ones = np.ones(N)
     return cost, ones
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md("""Now, we can run the model.""")
     return
 
 
 @app.cell
-def __(N, minCostModel):
+def _(N, minCostModel):
     initialObjective = minCostModel(N)
     return (initialObjective,)
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md(
         """
-        With this solution, we have managed to obtain a minimum cost assignment. Now, we also want to consider the affinity of the assignments and maximize it. With hierarchical optimization, this approach can be implemented in a simple manner. 
+    With this solution, we have managed to obtain a minimum cost assignment. Now, we also want to consider the affinity of the assignments and maximize it. With hierarchical optimization, this approach can be implemented in a simple manner. 
 
-        Let's call the minimum cost assignment value $z^*$. We can change the objective function to maximize the affinity while constraining the model with a cost upper bound. This approach will allow us to maximizing the total affinity while still maintaining the minimal cost. 
+    Let's call the minimum cost assignment value $z^*$. We can change the objective function to maximize the affinity while constraining the model with a cost upper bound. This approach will allow us to maximizing the total affinity while still maintaining the minimal cost. 
 
-        The objective function maximizes the total affinity, while constraint (1) limits the total cost to be at most the retrieved minimal value. The rest of the constraints remain the same.
+    The objective function maximizes the total affinity, while constraint (1) limits the total cost to be at most the retrieved minimal value. The rest of the constraints remain the same.
 
-        $$ max \quad w = \sum_{wp} a_{wp} x_{wp} $$
+    $$ max \quad w = \sum_{wp} a_{wp} x_{wp} $$
 
-        $$ \quad \sum_{wp} c_{wp} x_{wp} \leq z^*  \quad\quad (1)$$
+    $$ \quad \sum_{wp} c_{wp} x_{wp} \leq z^*  \quad\quad (1)$$
 
-        $$ \sum_{w} x_{wp} = 1, \quad  p \in P \quad\quad (2) $$
+    $$ \sum_{w} x_{wp} = 1, \quad  p \in P \quad\quad (2) $$
 
-        $$ \sum_{p} x_{wp} = 1, \quad w \in W  \quad\quad (3) $$
+    $$ \sum_{p} x_{wp} = 1, \quad w \in W  \quad\quad (3) $$
 
-        $$ x_{wp} \in \{0, 1\}, \quad w \in W, p \in P $$
+    $$ x_{wp} \in \{0, 1\}, \quad w \in W, p \in P $$
 
-        One can also decide to trade off from the cost and prioritize the affinity more. To achieve this we can increase the cost by a fraction and resulting in a more relaxed constraint. Let's call this fraction, $a$. Then constraint (1), transforms into the following:
+    One can also decide to trade off from the cost and prioritize the affinity more. To achieve this we can increase the cost by a fraction and resulting in a more relaxed constraint. Let's call this fraction, $a$. Then constraint (1), transforms into the following:
 
-        $$ \quad \sum_{wp} c_{wp} x_{wp} \leq (1+a)z^*  \quad\quad (1)$$
-        """
+    $$ \quad \sum_{wp} c_{wp} x_{wp} \leq (1+a)z^*  \quad\quad (1)$$
+    """
     )
     return
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md("""Let's implement the Maximum Affinity - Minimum Cost Model according to this definition.""")
     return
 
 
 @app.cell
-def __(Domain, Expr, Model, ObjectiveSense, affinity, cost, ones):
+def _(Domain, Expr, Model, ObjectiveSense, affinity, cost, ones):
     def maxAffinityMinCostModel(a, objective_value_init, N):
         #Model definition, called m
         M = Model()
@@ -211,27 +214,27 @@ def __(Domain, Expr, Model, ObjectiveSense, affinity, cost, ones):
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md("""Let's generate a matrix for affinity data as well. We also create a list of $a$ values and make multiple trials with the values to observe the trade off between affinty and cost. The $a$ values range from 0 to maximum 1 incrementing by 0.05.""")
     return
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     slider = mo.ui.slider(0.05, 1,step=0.05,value=0.5, show_value=True)
     mo.md(f"Choose the maximum alpha value for the trial range: {slider}")
     return (slider,)
 
 
 @app.cell(hide_code=True)
-def __(slider):
+def _(slider):
     alpha_range_input = slider.value
     alphaRange = (alpha_range_input/0.05) + 1
-    return alphaRange, alpha_range_input
+    return (alphaRange,)
 
 
 @app.cell
-def __(N, alphaRange, np):
+def _(N, alphaRange, np):
     affinity = np.random.uniform(low=10, high=50, size=(N, N))
     #The alpha values range from 0 to 1 incrementing by 0.1
     alphas = [round(i * 0.05, 2) for i in range(0, int(alphaRange))]
@@ -239,7 +242,7 @@ def __(N, alphaRange, np):
 
 
 @app.cell
-def __(alphas, maxAffinityMinCostModel, plt, time):
+def _(alphas, maxAffinityMinCostModel, plt, time):
     def RunMaximumAffinityModel(N,initialObjective):
         #Record the retrieved affinities with the corresponding cost value
         costs = []
@@ -265,31 +268,31 @@ def __(alphas, maxAffinityMinCostModel, plt, time):
 
 
 @app.cell
-def __(N, RunMaximumAffinityModel, initialObjective):
+def _(N, RunMaximumAffinityModel, initialObjective):
     runTime = RunMaximumAffinityModel(N,initialObjective)
     return (runTime,)
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md(
         """
-        This model cuırrently is solved in seconds, but recalculating and resolving it from scratch every time the cost upper bound changes becomes slower and less efficient as the number of workers and patients increases. Instead of starting the solution process anew each time, we can parametrize the model and use a previously found initial solution, which will significantly reduce the solution time for larger instances.
+    This model cuırrently is solved in seconds, but recalculating and resolving it from scratch every time the cost upper bound changes becomes slower and less efficient as the number of workers and patients increases. Instead of starting the solution process anew each time, we can parametrize the model and use a previously found initial solution, which will significantly reduce the solution time for larger instances.
 
-        In parametrized models, the MOSEK Fusion Solver checks if the given solution is valid for the updated parameters. If so, it continues searching for the optimal value starting from the initial solution. Since we are only modifying the right-hand side of constraint (1), it is more logical to increase the $a$ values. By doing this, we relax the right-hand side and ensure the used initial solution value in other models (solution with the lowest $a$ parameter) being feasible with other parameters as well.
-        """
+    In parametrized models, the MOSEK Fusion Solver checks if the given solution is valid for the updated parameters. If so, it continues searching for the optimal value starting from the initial solution. Since we are only modifying the right-hand side of constraint (1), it is more logical to increase the $a$ values. By doing this, we relax the right-hand side and ensure the used initial solution value in other models (solution with the lowest $a$ parameter) being feasible with other parameters as well.
+    """
     )
     return
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md("""To make our model parametrized, we need to define a parameter variable. With this parameter update, if it is still applicable, the previous model solution is used.""")
     return
 
 
 @app.cell
-def __(Domain, Expr, Model, ObjectiveSense, affinity, cost, np):
+def _(Domain, Expr, Model, ObjectiveSense, affinity, cost, np):
     def maxAffinityMinCostModelParametrized(a,objective_value_init,N):
         ones = np.ones(N)
         #Model definition called m
@@ -321,13 +324,13 @@ def __(Domain, Expr, Model, ObjectiveSense, affinity, cost, np):
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md("""Now, our model is parametrized. Let's run the model with the same $a$ values again. The objective results should be the same.""")
     return
 
 
 @app.cell
-def __(alphas, maxAffinityMinCostModelParametrized, plt, time):
+def _(alphas, maxAffinityMinCostModelParametrized, plt, time):
     def RunMaximumAffinityParametrized(N,initialObjective):
         affinities = []
         costs = []
@@ -362,38 +365,44 @@ def __(alphas, maxAffinityMinCostModelParametrized, plt, time):
 
 
 @app.cell
-def __(N, RunMaximumAffinityParametrized, initialObjective):
+def _(N, RunMaximumAffinityParametrized, initialObjective):
     runtime_Parametrized = RunMaximumAffinityParametrized(N,initialObjective)
     return (runtime_Parametrized,)
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md(
         """
-        Let's test the runtime difference. You can change all the model outputs by using the interactive elements. Go to the top of the page and increase the worker/patient size. <br>
-        _Hint: Try using 200 worker/patients!_
-        """
+    Let's test the runtime difference. You can change all the model outputs by using the interactive elements. Go to the top of the page and increase the worker/patient size. <br>
+    _Hint: Try using 200 worker/patients!_
+    """
     )
     return
 
 
 @app.cell
-def __(runTime, runtime_Parametrized):
+def _(runTime, runtime_Parametrized):
     print("The runtime of non-parametrized Maximum Affinity Model: ", runTime, "s.")
     print("The runtime of parametrized Maximum Affinity Model: ", runtime_Parametrized,"s.")
     return
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md(r"""You can also observe the trade-off relation between cost and affinity by changing the alpha range from the slider!""")
     return
 
 
 @app.cell(hide_code=True)
-def __(mo):
+def _(mo):
     mo.md(r"""This work is inspired by Ryan O'Neill's blog post about the implementation of hierarchical optimization. Click [here](https://ryanjoneil.github.io/posts/2024-11-08-hierarchical-optimization-with-gurobi/) to check out the blog post.""")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The **MOSEK** logo and name are trademarks of <a href="http://mosek.com">Mosek ApS</a>. The code is provided as-is. Compatibility with future release of **MOSEK** or the `Fusion API` are not guaranteed. For more information contact our [support](mailto:support@mosek.com). """)
     return
 
 

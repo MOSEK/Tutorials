@@ -4,40 +4,42 @@ A collection of tutorials for the MOSEK package. Compatible with the current sta
 
 The provided material complements the official [MOSEK documentation](https://mosek.com/documentation) with case studies, step-by-step tutorials and other material that may not fit otherwise.
 
-## Notebooks:
-
-  * [Introduction to Fusion](./fusion-intro/fusion.ipynb)
-  * [Small online example](./online/trymosek.ipynb), [[Run in Google Colab]](https://colab.research.google.com/github/MOSEK/Tutorials/blob/master/online/trymosek.ipynb)
-  * [Least squares regression](./leastsquares/regression-leastsquares.ipynb)
-  * [Linear regression techniques](./regression/regression.ipynb)
-  * [Hierarchical model](./hierarchical-model/hierarchical.py)
-  * [MLE convex density function](./mle-convex-density-function/MLEConvexDensityFunction.py)
-  * [GP Toolbox](./gp-toolbox/gptoolbox.py)
-  * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.ipynb)
-  * [Irreducible Infeasible Subset (IIS)](./iis-deletion-filter/DeletionFilter.ipynb)
-  * [Unit commitment](./unitcommitment/ucp.ipynb)
-  * [SINR Optimization](./sinr-optimization/sinr-optimization.ipynb)
-  * [Filter design](./filterdesign/filterdesign.ipynb)
-  * [K-means and Euclidean Clustering](./kmeans-clustering/kmeans.ipynb)
-  * [Binary quadratic problems](./binary-quadratic/binquad.ipynb)
-  * [Subcarrier and power allocation](./f-sparc/fsparc.ipynb)
-  * [Geometric facility location](./facility-location/small_disks.ipynb)
-  * [Smallest enclosing sphere](./minimum-ellipsoid/minimum-ellipsoid.ipynb)
-  * [Optimization of cycles on surfaces](./surfacecycles/surfaceCycles.ipynb)
-  * [Equilibrium of masses with springs](./equilibrium/equilibrium.ipynb)
-  * [Exact planar cover](./exact-planar-cover/exactcover.ipynb)
-  * [Approximating uncertain inequalities](./approx-uncertain-ineq/hard_uncertain.ipynb)
-  * [Wasserstein barycenter](./wasserstein/wasserstein-bary.ipynb)
-  * [Wasserstein barycenter with regularization](./wasserstein/wasserstein-bary-reg.ipynb)
-  * [Wasserstein barycenter (Julia)](./wasserstein-julia/wass-bary-julia.ipynb)
-  * [Wasserstein barycenter with regularization (Julia)](./wasserstein-julia/wass-bary-reg-julia.ipynb)
-  * [Utility based option pricing](./option-pricing/utility-option-pricing.ipynb)
-  * [Piecewise linear approximation of a convex function](./pwl-convex-approximation/pwl-convex-approximation.ipynb)
-  * [Distributionally robust portfolio](./dist-robust-portfolio/Data-driven_distributionally_robust_portfolio.ipynb)
-
 Many notebooks are accompanied by source code files and other material. Please browse the relevant directory.
 
-Some of the math equations render better in this [external viewer](http://nbviewer.jupyter.org/). Direct viewing links are available on the [MOSEK website](https://mosek.com/documentation).
+Python notebooks use [MARIMO](https://marimo.io/). Links for direct online viewing are available on the [MOSEK documentation page](https://mosek.com/documentation).
+
+## Notebooks:
+
+  * [Introduction to Fusion](./fusion-intro/fusion.py)
+  * [Least squares regression](./leastsquares/regression-leastsquares.py)
+  * [Linear regression techniques](./regression/regression.py)
+  * [Rank-one convexification for sparse regression](./rank-one-regression/RankOneConvexification.py)
+  * [Hierarchical model](./hierarchical-model/hierarchical.py)
+  * [Max Volume Cuboid](./max-volume-cuboid/maxVolumeCuboid.py)
+  * [MLE convex density function](./mle-convex-density-function/MLEConvexDensityFunction.py)
+  * [GP Toolbox](./gp-toolbox/gptoolbox.py)
+  * [Stochastic risk measures](./stochastic-risk/stochastic-risk-measures.py)
+  * [Irreducible Infeasible Subset (IIS)](./iis-deletion-filter/DeletionFilter.py)
+  * [Unit commitment](./unitcommitment/ucpMarimo.py)
+  * [SINR Optimization](./sinr-optimization/sinr-optimization.py)
+  * [Filter design](./filterdesign/filterdesign.py)
+  * [K-means and Euclidean Clustering](./kmeans-clustering/kmeans.py)
+  * [Binary quadratic problems](./binary-quadratic/binquad.py)
+  * [Subcarrier and power allocation](./f-sparc/fsparc.py)
+  * [Geometric facility location](./facility-location/small_disks.py)
+  * [Smallest enclosing ellipsoid](./minimum-ellipsoid/minimum-ellipsoid.py)
+  * [Truss topology design](./truss-design/TrussTopology.py)
+  * [Optimization of cycles on surfaces](./surfacecycles/surfaceCycles.py)
+  * [Equilibrium of masses with springs](./equilibrium/equilibrium.py)
+  * [Exact planar cover](./exact-planar-cover/exactcover.py)
+  * [Approximating uncertain inequalities](./approx-uncertain-ineq/hard_uncertain.py)
+  * [Wasserstein barycenter](./wasserstein/wasserstein-bary.py)
+  * [Wasserstein barycenter with regularization](./wasserstein/wasserstein-bary-reg.py)
+  * [Wasserstein barycenter (Julia)](./wasserstein-julia/wass-bary-julia.ipynb)
+  * [Wasserstein barycenter with regularization (Julia)](./wasserstein-julia/wass-bary-reg-julia.ipynb)
+  * [Utility based option pricing](./option-pricing/utility-option-pricing.py)
+  * [Piecewise linear approximation of a convex function](./pwl-convex-approximation/pwl-convex-approximation.py)
+  * [Distributionally robust portfolio](./dist-robust-portfolio/Data-driven_distributionally_robust_portfolio.py)
 
 
 -----------------------------------------------------------------------------------------------------

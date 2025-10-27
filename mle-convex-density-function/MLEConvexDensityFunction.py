@@ -343,7 +343,7 @@ def _(plt):
         plt.ylabel('Y Values')
         plt.grid(True)
         plt.legend()
-        plt.show()
+        plt.show(block=False)
     return (PlotFigure,)
 
 
