@@ -161,7 +161,7 @@ def _(GeometricProgramming):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        """
+        r"""
     The objective function in a geometric program is, by definition, minimized. The `addObjective([Monomial, ...])` function accepts either a single `Monomial` object or a list of `Monomial` objects as input.
 
     A `Monomial` object can be constructed using the following method:
@@ -169,7 +169,8 @@ def _(mo):
     `Monomial.add(coefficient, indices, alphas)`
 
     - **`coefficient`**: $c$, a positive scalar  
-    - **`indices`**: an array of selected variable indices $i  \{1, \dots, N\}$  
+    - **`indices`**: an array of selected variable indices $i  \in \{1, \dots, N\}$  
+      
       _Example_: To add a monomial involving $y$ and $z$ from the list $x, y, z, w$, input `indices = [1,2]`  
     - **`alphas`**: an array of exponents $a_i$ corresponding to each selected variable
     """

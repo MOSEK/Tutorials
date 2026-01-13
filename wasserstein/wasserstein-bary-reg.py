@@ -197,7 +197,7 @@ def _(np):
             #Add constraints    
 
             #Constraint (1)
-            M.constraint('B', Expr.sub(Expr.sum(pi,1) , Var.repeat(mu,1,k).transpose()), Domain.equalsTo(0.0))
+            M.constraint('B', Expr.sub(Expr.sum(pi,1) , Var.repeat(mu,k,1).transpose()), Domain.equalsTo(0.0))
             #Constraint (2)
             M.constraint('C', Expr.sum(pi,2), Domain.equalsTo(v))
 
@@ -239,7 +239,7 @@ def _(np):
                                          Domain.inPExpCone())
 
             #Constraint (1)
-            M.constraint('B', Expr.sub(Expr.sum(pi,1) , Var.repeat(mu,1,k).transpose()), Domain.equalsTo(0.0))
+            M.constraint('B', Expr.sub(Expr.sum(pi,1) , Var.repeat(mu,k,1).transpose()), Domain.equalsTo(0.0))
             #Constraint (2)
             M.constraint('C', Expr.sum(pi,2), Domain.equalsTo(v))
 

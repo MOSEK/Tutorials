@@ -152,7 +152,7 @@ def _(N, minCostModel):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        """
+        r"""
     With this solution, we have managed to obtain a minimum cost assignment. Now, we also want to consider the affinity of the assignments and maximize it. With hierarchical optimization, this approach can be implemented in a simple manner. 
 
     Let's call the minimum cost assignment value $z^*$. We can change the objective function to maximize the affinity while constraining the model with a cost upper bound. This approach will allow us to maximizing the total affinity while still maintaining the minimal cost. 
@@ -276,7 +276,7 @@ def _(N, RunMaximumAffinityModel, initialObjective):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        """
+        r"""
     This model cuırrently is solved in seconds, but recalculating and resolving it from scratch every time the cost upper bound changes becomes slower and less efficient as the number of workers and patients increases. Instead of starting the solution process anew each time, we can parametrize the model and use a previously found initial solution, which will significantly reduce the solution time for larger instances.
 
     In parametrized models, the MOSEK Fusion Solver checks if the given solution is valid for the updated parameters. If so, it continues searching for the optimal value starting from the initial solution. Since we are only modifying the right-hand side of constraint (1), it is more logical to increase the $a$ values. By doing this, we relax the right-hand side and ensure the used initial solution value in other models (solution with the lowest $a$ parameter) being feasible with other parameters as well.
@@ -373,7 +373,7 @@ def _(N, RunMaximumAffinityParametrized, initialObjective):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        """
+        r"""
     Let's test the runtime difference. You can change all the model outputs by using the interactive elements. Go to the top of the page and increase the worker/patient size. <br>
     _Hint: Try using 200 worker/patients!_
     """

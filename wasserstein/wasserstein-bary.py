@@ -204,7 +204,7 @@ def _(np):
             d = self.ms_distance(n, data.shape[1])
             mu = M.variable('Mu', n, Domain.greaterThan(0.0))
             pi = M.variable('Pi', [k, n, n], Domain.greaterThan(0.0))
-            M.constraint('B', Expr.sub(Expr.sum(pi, 1), Var.repeat(mu, 1, k).transpose()), Domain.equalsTo(0.0))
+            M.constraint('B', Expr.sub(Expr.sum(pi, 1), Var.repeat(mu, k, 1).transpose()), Domain.equalsTo(0.0))
             M.constraint('C', Expr.sum(pi, 2), Domain.equalsTo(v))
             M.objective('Obj', ObjectiveSense.Minimize, Expr.sum(Expr.mul(Expr.mul(Expr.reshape(pi.asExpr(), k, n * n), d.ravel()), 1 / k)))
             M.setLogHandler(sys.stdout)
