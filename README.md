@@ -18,6 +18,7 @@ Python notebooks use [MARIMO](https://marimo.io/). Links for direct online viewi
   * [Max Volume Cuboid](https://docs.mosek.com/tutorials-notebooks/max-volume-cuboid/maxVolumeCuboid.html) ([source](https://github.com/MOSEK/Tutorials/blob/master/max-volume-cuboid))
   * [MLE convex density function](https://docs.mosek.com/tutorials-notebooks/mle-convex-density-function/MLEConvexDensityFunction.html) ([source](https://github.com/MOSEK/Tutorials/blob/master/mle-convex-density-function))
   * [GP Toolbox](https://docs.mosek.com/tutorials-notebooks/gp-toolbox/gptoolbox.html) ([source](https://github.com/MOSEK/Tutorials/blob/master/gp-toolbox))
+  * [Transformer Design](https://docs.mosek.com/tutorials-notebooks/transformer-design/transformerdesign.html) ([source](https://github.com/MOSEK/Tutorials/blob/master/transformer-design))
   * [Stochastic risk measures](https://docs.mosek.com/tutorials-notebooks/stochastic-risk/stochastic-risk-measures.html) ([source](https://github.com/MOSEK/Tutorials/blob/master/stochastic-risk))
   * [Irreducible Infeasible Subset (IIS)](https://docs.mosek.com/tutorials-notebooks/iis-deletion-filter/DeletionFilter.html) ([source](https://github.com/MOSEK/Tutorials/blob/master/iis-deletion-filter))
   * [Unit commitment](https://docs.mosek.com/tutorials-notebooks/unitcommitment/ucpMarimo.html) ([source](https://github.com/MOSEK/Tutorials/blob/master/unitcommitment))
